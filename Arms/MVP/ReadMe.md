@@ -12,7 +12,7 @@
 
 &emsp;接口的实现工作谁做？Presenter，这个名字据说是由IBM子公司Taligent提出来的。最先架构是三个角色的单线双向结构，意味着Model层是永远不会被View层持有对象的，而且这里的Model不是数据实体，是数据提供者！
 
-![Arm-MVP](.\Arm-MVP.png)
+<img src=".\Arm-MVP.png" alt="Arm-MVP"/>
 
 &emsp;因此MVP“正统”就是一种数据驱动、单一职责的架构：
 
@@ -22,11 +22,11 @@
 
 &emsp;有“正统”就有“非正统”，“非正统一”：
 
-![Arm-MVP-01](.\Arm-MVP-01.png)
+<img src=".\Arm-MVP-01.png" alt="Arm-MVP-01"/>
 
 &emsp;为什么存在这种模式的MVP，道理很简单，这里的Model不是数据提供者，它们都是一个一个的数据实体，不负责数据存取，由Presenter来负责数据存取，Presenter只是简单持有了Model的对象。但是细心点会发现，在Android中经常会出现Presenter回调数据到View层的现象，因为Presenter会告诉View层更新UI，此时如果UI显示了一些信息，这些信息往往就是Model（这里不是数据提供者）实体对象，这样一来，那View层不也就依赖Model了吗？最后又出现了另外一种“非正统”架构：
 
-![Arm-MVP-01](.\Arm-MVP-02.png)
+<img src=".\Arm-MVP-02.png" alt="Arm-MVP-02"/>
 
 &emsp;用过MVC架构的都知道，这不就是MVC吗？Android开发工程师：这是MVP！归根结底，都是Model的本质变了，Model只要是数据提供者，那么MVP才说得过去。不过Android也有特殊性，上文Android的发展中提到过，Android最初就是因为Activity或者Fragment的特殊，导致与生俱来就是MVC的架构。Android工程师一般认为一旦面向接口编程之后，就铁定了走向MVP开发了。
 
