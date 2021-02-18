@@ -1,0 +1,4 @@
+include ':mvp-framework'
+include ':mvvm-framework'
+include ':app'
+rootProject.name = "Arms"
