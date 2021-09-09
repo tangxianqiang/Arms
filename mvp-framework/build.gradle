@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -8,7 +10,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -23,22 +25,54 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
+    // Android官方资源
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.5.0'
+    // 组件库
+    api 'androidx.appcompat:appcompat:1.3.0-alpha02'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.1.0'
+    api "androidx.multidex:multidex:2.0.1"
+    api 'com.google.android.material:material:1.2.1'
+    // 生命周期管理
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    testImplementation 'junit:junit:4.+'
+    // Glide图片加载
+    api 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    // Kotlin风格的页面拓展工具
+    api "androidx.activity:activity-ktx:1.2.0-rc01"
+    api 'androidx.fragment:fragment-ktx:1.3.0-rc01'
+
+    // MMKV储存库替换SharedPreferences（支持多进程）
+    api 'com.tencent:mmkv-static:1.2.4'
+    // Retrofit网络请求
+    compileOnly 'com.squareup.retrofit2:retrofit:2.9.0'
+    // Room数据库
+    compileOnly 'androidx.room:room-runtime:2.3.0-alpha04'
+    // Gson数据解析
+    api 'com.google.code.gson:gson:2.8.6'
+
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
