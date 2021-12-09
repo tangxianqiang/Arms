@@ -1,2 +1,2 @@
 # Arms
-仅仅是为了不忘记Android，不忘初心。This is fucking Android！
+花有重开时，人无再少年
