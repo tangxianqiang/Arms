@@ -41,7 +41,7 @@ object RetrofitHelper {
                     it.proceed(tokenRequest)
                 }
 
-                // 将结果进行格式化之后打印
+                // 将结果进行格式化之后打印，格式化打印仅仅能用在数据解析，不能用于文件下载，否则无法正确监听进度 todo
                 val responseBody = response.peekBody(Long.MAX_VALUE)
                 val jsonReader = InputStreamReader(responseBody.byteStream(), "UTF-8")
                 val reader = BufferedReader(jsonReader)
